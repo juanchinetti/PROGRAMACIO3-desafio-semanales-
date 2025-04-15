@@ -1,11 +1,6 @@
 class Solution:
     def romanToInt(self, s):
-        """
-        Convierte un número romano a entero.
-
-        :param s: str - número romano válido
-        :return: int - número entero
-        """
+       
         roman = {
             'I': 1,
             'V': 5,
