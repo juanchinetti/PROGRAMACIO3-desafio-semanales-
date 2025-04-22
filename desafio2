@@ -1,0 +1,45 @@
+"""
+Problema 3: Subcadena más larga sin caracteres repetidos
+Dificultad: Media
+
+Dado un string `s`, encuentra la longitud de la subcadena más larga que no contenga caracteres duplicados.
+
+Ejemplos:
+
+Entrada: s = "abcabcbb"
+Salida: 3
+Explicación: La respuesta es "abc", con una longitud de 3.
+
+Entrada: s = "bbbbb"
+Salida: 1
+Explicación: La respuesta es "b", con una longitud de 1.
+
+Entrada: s = "pwwkew"
+Salida: 3
+Explicación: La respuesta es "wke", con una longitud de 3.
+Nota: La respuesta debe ser una subcadena, no una subsecuencia.
+
+Restricciones:
+- 0 <= len(s) <= 5 * 10^4
+- s consiste en letras inglesas, dígitos, símbolos y espacios.
+"""
+
+def longitud_subcadena_mas_larga(s: str) -> int:
+    vista = set()
+    izquierda = 0
+    max_longitud = 0
+
+    for derecha in range(len(s)):
+        while s[derecha] in vista:
+            vista.remove(s[izquierda])
+            izquierda += 1
+        vista.add(s[derecha])
+        max_longitud = max(max_longitud, derecha - izquierda + 1)
+
+    return max_longitud
+
+
+# Ejemplos de prueba
+print(longitud_subcadena_mas_larga("abcabcbb"))  # Salida: 3
+print(longitud_subcadena_mas_larga("bbbbb"))     # Salida: 1
+print(longitud_subcadena_mas_larga("pwwkew"))     # Salida: 3
